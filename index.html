@@ -12,390 +12,697 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
     rel="stylesheet">
- 
+<!-- 
+    Js animation libarires  -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background: #f9f9f9;
-}
+      margin: 0;
+      padding: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: #f9f9f9;
+    }
 
-/* ===========================
+    /* ===========================
    PRELOADER
 =========================== */
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
 
-.loader {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #28a745;
-  border-top: 4px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
+    .loader {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #28a745;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
 
-body.loaded .loader-wrapper {
-  display: none;
-}
+    body.loaded .loader-wrapper {
+      display: none;
+    }
 
-@keyframes spin {
-  from { transform: rotate(0); }
-  to { transform: rotate(360deg); }
-}
+    @keyframes spin {
+      from {
+        transform: rotate(0);
+      }
 
-/* ===========================
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===========================
    NAVBAR
 =========================== */
-.navbar {
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    .navbar {
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-.navbar .nav-link {
-  font-weight: 600;
-  margin-left: 15px;
-  color: #333;
-}
+    .navbar .nav-link {
+      font-weight: 600;
+      margin-left: 15px;
+      color: #333;
+    }
 
-.navbar .nav-link:hover {
-  color: #28a745;
-}
+    .navbar .nav-link:hover {
+      color: #28a745;
+    }
 
-/* ===========================
+    /* ===========================
    BANNER CAROUSEL
 =========================== */
-.carousel-item {
-  height: 80vh;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center;
+    .carousel-item {
+      height: 80vh;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .carousel-caption {
+      bottom: 20%;
+    }
+
+    .carousel-caption h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .carousel-caption p {
+      font-size: 1.2rem;
+    }
+
+    /* Carousel Indicators */
+    #bannerCarousel .carousel-indicators button {
+      width: 18px;
+      height: 18px;
+      margin: 0 6px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: 2px solid #fff;
+      transition: 0.3s ease;
+    }
+
+    #bannerCarousel .carousel-indicators button.active {
+      background-color: #198754;
+      border-color: #198754;
+      width: 22px;
+      height: 22px;
+      transform: scale(1.1);
+    }
+
+    #bannerCarousel .carousel-indicators button:hover {
+      background-color: #ffffff;
+      border-color: #ffffff;
+      transform: scale(1.15);
+    }
+
+    /* Slide/fade animation for carousel captions */
+.carousel-caption h1, 
+.carousel-caption p, 
+.carousel-caption a {
+  opacity: 0;
+  transform: translateX(-50px); /* left se slide */
+  transition: all 0.8s ease-in-out;
+}
+
+.carousel-item.active .carousel-caption h1,
+.carousel-item.active .carousel-caption p,
+.carousel-item.active .carousel-caption a {
+  opacity: 1;
+  transform: translateX(0);
+}
+.carousel-item.active .carousel-caption h1 {
+  transition-delay: 0.3s;
+}
+.carousel-item.active .carousel-caption p {
+  transition-delay: 0.5s;
+}
+.carousel-item.active .carousel-caption a {
+  transition-delay: 0.7s;
+}
+    /* ===========================
+   STORIES SECTION
+=========================== */
+    .stories-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .story-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .story-card .more-btn {
+      margin-top: 10px;
+      color: #28a745;
+      font-weight: 600;
+    }
+
+    /* ===========================
+   FACULTY SECTION
+=========================== */
+    .faculty-box {
+      background: #fff;
+    }
+
+    .faculty-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+    }
+
+    .arrow-btn {
+      background: black;
+      border: none;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrow-btn:hover {
+      background: #218838;
+    }
+
+    #faculty-img,
+    #faculty-name,
+    #faculty-position,
+    #faculty-text {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.3s ease-in-out;
+    }
+
+    .show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Blur background for Bootstrap story modals */
+    .modal-backdrop.show {
+      opacity: 1 !important;
+      background: rgba(255, 255, 255, 0.2) !important;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Optional: make modal itself slightly glassy */
+    .modal-content {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 15px;
+    }
+
+    /* ===========================
+   GALLERY
+=========================== */
+    .gallery-title {
+      margin-top: 50px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      transition: 0.3s;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.1);
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    #lightbox img {
+      width: 70%;
+      max-width: 900px;
+      border-radius: 10px;
+    }
+
+    #lightbox .close,
+    #lightbox .prev,
+    #lightbox .next {
+      position: absolute;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    #lightbox .close {
+      top: 20px;
+      right: 40px;
+    }
+
+    #lightbox .prev {
+      left: 40px;
+    }
+
+    #lightbox .next {
+      right: 40px;
+    }
+
+
+    /* ===========================
+   TESTIMONIALS
+=========================== */
+.testimonial-hero {
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* WIDTH INCREASED */
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto 50px;
   position: relative;
 }
-
-.carousel-caption {
-  bottom: 20%;
-}
-
-.carousel-caption h1 {
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-.carousel-caption p {
-  font-size: 1.2rem;
-}
-
-/* Carousel Indicators */
-#bannerCarousel .carousel-indicators button {
-  width: 18px;
-  height: 18px;
-  margin: 0 6px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 2px solid #fff;
+.image-grid img {
+  width: 100%;
+  height: 170px; /* HEIGHT ALSO INCREASED */
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
   transition: 0.3s ease;
 }
 
-#bannerCarousel .carousel-indicators button.active {
-  background-color: #198754;
-  border-color: #198754;
-  width: 22px;
-  height: 22px;
-  transform: scale(1.1);
+
+/* Center Content */
+.content-box {
+  max-width: 620px;
+  margin: 0 auto;
 }
 
-#bannerCarousel .carousel-indicators button:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  transform: scale(1.15);
-}
-
-/* ===========================
-   STORIES SECTION
-=========================== */
-.stories-section {
-  padding: 80px 0;
-  background: #fff;
-}
-
-.story-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.story-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.story-card .more-btn {
-  margin-top: 10px;
-  color: #28a745;
-  font-weight: 600;
-}
-
-/* ===========================
-   FACULTY SECTION
-=========================== */
-.faculty-box {
-  background: #fff;
-}
-
-.faculty-img {
-  width: 100%;
-  max-height: 320px;
-  object-fit: cover;
-}
-
-.arrow-btn {
-  background: black;
-  border: none;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.arrow-btn:hover {
-  background: #218838;
-}
-
-#faculty-img,
-#faculty-name,
-#faculty-position,
-#faculty-text {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.3s ease-in-out;
-}
-
-.show {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-/* Blur background for Bootstrap story modals */
-.modal-backdrop.show {
-  opacity: 1 !important;
-  background: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(8px);
-}
-
-/* Optional: make modal itself slightly glassy */
-.modal-content {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-  border-radius: 15px;
-}
-/* ===========================
-   GALLERY
-=========================== */
-.gallery-title {
-  margin-top: 50px;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.gallery-item {
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  transition: 0.3s;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.1);
-}
-
-/* LIGHTBOX */
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-}
-
-#lightbox img {
-  width: 70%;
-  max-width: 900px;
-  border-radius: 10px;
-}
-
-#lightbox .close,
-#lightbox .prev,
-#lightbox .next {
-  position: absolute;
-  color: white;
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-
-#lightbox .close { top: 20px; right: 40px; }
-#lightbox .prev { left: 40px; }
-#lightbox .next { right: 40px; }
-
-
-/* ===========================
-   TESTIMONIALS
-=========================== */
-.testimonial-section {
-  background: #fff;
-}
-
-.testimonial-card {
-  background: #fff;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.testimonial-user img {
-  border: 2px solid #28a745;
-}
-/* location section */
-
-  .map-section {
-    position: relative;
-    height: 500px;
-    background-color: #1b1b2f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    padding: 0 50px;
-    overflow: hidden;
-  }
-
-  .map-section h2 {
-    font-size: 48px;
-    margin: 0 0 20px 0;
-  }
-
-  .map-section p {
-    font-size: 18px;
-    max-width: 500px;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    color: #ccc;
-  }
-
-  .map-section .btn {
-    background-color: #00c853;
-    color: white;
-    padding: 12px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-
-  .map-section .btn:hover {
-    background-color: #00e676;
-  }
-
-  /* Map image */
-  .map-section .map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://i.pinimg.com/1200x/51/a4/96/51a49628cd230bed3503be34e0e69b90.jpg') no-repeat center center;
-    background-size: cover;
-    z-index: 0;
-    filter: brightness(0.5);
-  }
-
-  /* Glowing dots */
-  .dot {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #00ff66;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
-    animation: glow 2s infinite alternate;
-  }
-
-  @keyframes glow {
-    0% { transform: scale(1); opacity: 0.7; }
-    100% { transform: scale(1.5); opacity: 1; }
-  }
-
-  /* Dot positions (example) */
-  .dot1 { top: 20%; left: 30%; }
-  .dot2 { top: 40%; left: 50%; }
-  .dot3 { top: 60%; left: 70%; }
-  .dot4 { top: 35%; left: 60%; }
-  .dot5 { top: 55%; left: 25%; }
-
-  .content {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-  }
-
-/* ===========================
-   FOOTER
-=========================== */
-.footer-section {
-  background: #222;
-}
-
-.footer-text,
-.footer-links li a {
-  color: #ccc;
+.tag {
+  background: #f3f3f3;
+  padding: 6px 16px;
+  border-radius: 20px;
   font-size: 14px;
+  font-weight: 600;
+  color: #555;
 }
 
-.footer-links li a:hover {
-  color: #28a745;
+.content-box h2 {
+  font-weight: 700;
+  font-size: 32px;
+  margin: 18px 0 10px;
+  color: #222;
 }
 
-.social-icon {
-  font-size: 18px;
-  color: #fff;
+.content-box p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 25px;
 }
 
-.social-icon:hover {
-  color: #28a745;
+.btn-read {
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.footer-bottom {
-  background: #111;
+.btn-read:hover {
+  background: #333;
+}
+  .image-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  position: relative;
 }
 
+/* Curve positions */
+.image-grid img:nth-child(1),
+.image-grid img:nth-child(12) {
+  transform: translateY(40px);
+}
+
+.image-grid img:nth-child(2),
+.image-grid img:nth-child(11) {
+  transform: translateY(20px);
+}
+
+.image-grid img:nth-child(3),
+.image-grid img:nth-child(10) {
+  transform: translateY(10px);
+}
+
+.image-grid img:nth-child(6),
+.image-grid img:nth-child(7) {
+  transform: translateY(15px);
+}
+
+.image-grid img:nth-child(4),
+.image-grid img:nth-child(9) {
+  transform: translateY(0px);
+}
+
+.image-grid img:nth-child(5),
+.image-grid img:nth-child(8) {
+  transform: translateY(5px);
+}
+
+.image-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+    /* location section */
+
+    .map-section {
+      position: relative;
+      height: 500px;
+      background-color: #1b1b2f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      padding: 0 50px;
+      overflow: hidden;
+    }
+
+    .map-section h2 {
+      font-size: 48px;
+      margin: 0 0 20px 0;
+    }
+
+    .map-section p {
+      font-size: 18px;
+      max-width: 500px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .map-section .btn {
+      background-color: #00c853;
+      color: white;
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .map-section .btn:hover {
+      background-color: #00e676;
+    }
+
+    /* Map image */
+    .map-section .map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/1200x/51/a4/96/51a49628cd230bed3503be34e0e69b90.jpg') no-repeat center center;
+      background-size: cover;
+      z-index: 0;
+      filter: brightness(0.5);
+    }
+
+    /* Glowing dots */
+    .dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #00ff66;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    /* Dot positions (example) */
+    .dot1 {
+      top: 20%;
+      left: 30%;
+    }
+
+    .dot2 {
+      top: 40%;
+      left: 50%;
+    }
+
+    .dot3 {
+      top: 60%;
+      left: 70%;
+    }
+
+    .dot4 {
+      top: 35%;
+      left: 60%;
+    }
+
+    .dot5 {
+      top: 55%;
+      left: 25%;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    /* ===========================
+    FOOTER
+=========================== */
+    .footer-section {
+      background: #222;
+    }
+
+    .footer-text,
+    .footer-links li a {
+      color: #ccc;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .footer-links li a:hover {
+      color: #28a745;
+    }
+
+    .social-icon {
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .social-icon:hover {
+      color: #28a745;
+    }
+
+    .footer-bottom {
+      background: #111;
+    }
+    /* Floating Icons */
+    .fixed-icon {
+      position: fixed;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    .chat-icon {
+      bottom: 40px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      position: fixed;
+    }
+
+    .chat-icon:hover .chat-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .chat-tooltip {
+      position: absolute;
+      right: 60px;
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    /* Chat Popup */
+    .chat-popup {
+      top: 20%;
+      position: fixed;
+      right: 20px;
+      width: 320px;
+      max-width: 90%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.3s ease;
+      font-family: Arial, sans-serif;
+    }
+
+    .chat-header {
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-body {
+      padding: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .bot-message {
+      background: #f1f1f1;
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .question-btn {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .question-btn:hover {
+      background: #0056b3;
+    }
+
+    .chat-footer {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      outline: none;
+    }
+
+    .chat-footer button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .chat-footer button:hover {
+      background: #0056b3;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
@@ -432,55 +739,67 @@ body.loaded .loader-wrapper {
   </nav>
 
   <!---======================Banner Carousel===============================-->
-  <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-    <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url('pages/Images/Banner/Photo-1.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Empowering learners every step of the way</p>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-2.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Innovative projects shaping tomorrow</p>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-3.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Quality education for all</p>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('pages/Images/Banner/Photo-4.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Innovating and inspiring</p>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-5.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Empowering communities</p>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-3.jpg');">
-        <div class="carousel-caption">
-          <h1>Crafting a Better Future</h1>
-          <p>Learning without limits</p>
-        </div>
+<!-- Banner Carousel -->
+<!-- Bootstrap 5 Carousel with Smooth Animations -->
+<div id="bannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active" style="background-image: url('pages/Images/Banner/Photo-1.jpg'); background-size: cover; background-position: center; height: 100vh;">
+      <div class="carousel-caption text-start">
+        <h1>Achieve Excellence in Learning</h1>
+        <p>Join our academy and unlock your potential</p>
+        <a href="#programs" class="btn btn-primary btn-lg">Explore Programs</a>
       </div>
     </div>
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"
-        aria-current="true"></button>
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"></button>
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="4"></button>
-      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="5"></button>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-2.jpg'); background-size: cover; background-position: center; height: 100vh;">
+      <div class="carousel-caption text-start">
+        <h1>Innovative Projects, Bright Futures</h1>
+        <p>Hands-on learning that shapes tomorrow</p>
+        <a href="#contact" class="btn btn-success btn-lg">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-3.jpg'); background-size: cover; background-position: center; height: 100vh;">
+      <div class="carousel-caption text-start">
+        <h1>Quality Education for All</h1>
+        <p>Empowering every learner with knowledge</p>
+        <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="carousel-item" style="background-image: url('pages/Images/Banner/Photo-4.jpg'); background-size: cover; background-position: center; height: 100vh;">
+      <div class="carousel-caption text-start">
+        <h1>Inspiring Creativity & Innovation</h1>
+        <p>Transforming ideas into real-world skills</p>
+        <a href="#programs" class="btn btn-success btn-lg">View Courses</a>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="carousel-item" style="background-image: url('pages/Images/Banner/photo-5.jpg'); background-size: cover; background-position: center; height: 100vh;">
+      <div class="carousel-caption text-start">
+        <h1>Building Confident Learners</h1>
+        <p>Step-by-step guidance towards success</p>
+        <a href="#contact" class="btn btn-primary btn-lg">Get Started</a>
+      </div>
     </div>
   </div>
+
+  <!-- Carousel Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="4"></button>
+  </div>
+</div>
+
+
 
   <!--=======================Our Story Section==========================-->
   <section class="stories-section">
@@ -684,143 +1003,97 @@ body.loaded .loader-wrapper {
     </div>
   </div>
 
-  <!-- =================================Gallery Section==========================  -->
-<h2 class="gallery-title text-center mb-4">Gallery</h2>
-
-<div class="container">
-  <div class="row g-3">
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-1.webp" class="img-fluid" alt=""></div>
-    </div>
-  <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-2.webp" class="img-fluid" alt=""></div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-3.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-4.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-5.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-6.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-7.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-9.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-10.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-11.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-12.webp" class="img-fluid" alt=""></div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="gallery-item"><img src="pages/Images/gallery/photo-13.webp" class="img-fluid" alt=""></div>
-    </div>
-
-  </div>
-</div>
-<!-- LIGHTBOX -->
-<div id="lightbox" style="display:none;">
-  <span class="close">&times;</span>
-  <span class="prev">&#10094;</span>
-  <img id="lightbox-img" class="lightbox-content" src="">
-  <span class="next">&#10095;</span>
-</div>
-
-<!--============================ testimonial-section =====================================-->
- <section class="testimonial-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">What Our Students Say</h2>
-      <div class="row justify-content-center">
-        
-        <!-- Testimonial Card -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="testimonial-card p-4 shadow-sm rounded">
-            <div class="testimonial-content">
-              <p>"Learners Academy transformed my learning experience! The teachers are amazing and always supportive."</p>
-            </div>
-            <div class="testimonial-user mt-3 d-flex align-items-center">
-              <img src="pages/Images/Testimonial/photo-1.webp" alt="Student 1" class="rounded-circle me-3" width="50" height="50">
-              <div>
-                <h6 class="mb-0">Ayesha Khan</h6>
-                <small>Class 10</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial Card -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="testimonial-card p-4 shadow-sm rounded">
-            <div class="testimonial-content">
-              <p>"The environment here is so positive and motivating. I feel more confident every day."</p>
-            </div>
-            <div class="testimonial-user mt-3 d-flex align-items-center">
-              <img src="pages/Images/Testimonial/photo-3.webp" alt="Student 2" class="rounded-circle me-3" width="50" height="50">
-              <div>
-                <h6 class="mb-0">Ali Raza</h6>
-                <small>Class 12</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial Card -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="testimonial-card p-4 shadow-sm rounded">
-            <div class="testimonial-content">
-              <p>"Thanks to Learners Academy, I achieved my target grades! Highly <br>recommended."</p>
-            </div>
-            <div class="testimonial-user mt-3 d-flex align-items-center">
-              <img src="pages/Images/Testimonial/photo-2.webp" alt="Student 3" class="rounded-circle me-3" width="50" height="50">
-              <div>
-                <h6 class="mb-0">Sara Ahmed</h6>
-                <small>Class 9</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!--=========================Location Section=================-->
- 
-<section class="map-section">
-  <div class="map"></div>
-
-  <div class="content">
-    <h2>Map Design</h2>
-    <p>Map data visualization will be widely used in various industries and will play a powerful role in the future.</p>
-    <a href="#" class="btn">Get Started</a>
+  <!--============================ testimonial-section =====================================-->
+<section class="testimonial-hero">
+  <div class="image-grid">
+    <img src="https://i.pravatar.cc/260?img=38" />
+    <img src="https://i.pravatar.cc/260?img=32" />
+    <img src="https://i.pravatar.cc/260?img=12" />
+    <img src="https://i.pravatar.cc/260?img=48" />
+    <img src="https://i.pravatar.cc/260?img=15" />
+    <img src="https://i.pravatar.cc/260?img=27" />
+    <img src="https://i.pravatar.cc/260?img=18" />
+    <img src="https://i.pravatar.cc/260?img=42" />
+    <img src="https://i.pravatar.cc/260?img=55" />
+    <img src="https://i.pravatar.cc/260?img=20" />
+    <img src="https://i.pravatar.cc/260?img=47" />
+    <img src="https://i.pravatar.cc/260?img=33" />
   </div>
 
-
+  <div class="content-box text-center">
+    <span class="tag">Testimonials</span>
+    <h2>Building bright futures<br>through Learners Academy</h2>
+    <p>
+       Students trust Learners Academy for clear guidance, expert teachers, and a supportive learning environment.
+    </p>
+    <a class="btn-read" href="#">Read Success Stories →</a>
+  </div>
 </section>
 
+  <!-- =================================Gallery Section==========================  -->
+  <h2 class="gallery-title text-center mb-5">Learners Academy Gallery</h2>
 
+  <div class="container">
+    <div class="row g-3">
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-1.webp" class="img-fluid" alt=""></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-2.webp" class="img-fluid" alt=""></div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-3.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-4.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-5.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-6.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-7.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-9.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-10.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-11.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-12.webp" class="img-fluid" alt=""></div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item"><img src="pages/Images/gallery/photo-13.webp" class="img-fluid" alt=""></div>
+      </div>
+
+    </div>
+  </div>
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <img id="lightbox-img" class="lightbox-content" src="">
+    <span class="next">&#10095;</span>
+  </div>
   <!--=========================Footer Section===================-->
   <footer class="footer-section text-white ">
-    <div class="container py-5">
+    <div class="container mt-5">
 
       <div class="row gy-4">
 
@@ -843,11 +1116,9 @@ body.loaded .loader-wrapper {
           <ul class="list-unstyled footer-links">
             <li><a href="#">About Us</a></li>
             <li><a href="#">Our Projects</a></li>
-            <li><a href="#">What Makes Us KIPS</a></li>
             <li><a href="#">Careers</a></li>
             <li><a href="#">Partner with Us</a></li>
             <li><a href="#">Student Portal</a></li>
-            <li><a href="#">Parent Portal</a></li>
           </ul>
         </div>
 
@@ -873,6 +1144,41 @@ body.loaded .loader-wrapper {
       <small>© 2025 Learners Academy — All Rights Reserved.</small>
     </div>
   </footer>
+  <!-- ================= Floating Icons ================= -->
+
+  <!-- Live Chat Icon -->
+  <div class="fixed-icon chat-icon" id="liveChatBtn">
+    <i class="fa fa-comments"></i>
+    <span class="chat-tooltip">Live Chat Here</span>
+  </div>
+
+  <!-- Chat Bot Popup -->
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+      <h4>Coaching Bot</h4>
+      <span id="closeChat" class="close-btn">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <p class="bot-message">Hi! How can I help you today? Please select a question below:</p>
+      <div class="question-list">
+        <button class="question-btn">1. What are the coaching fees?</button>
+        <button class="question-btn">2. What courses do you offer?</button>
+        <button class="question-btn">3. How can I contact you?</button>
+        <button class="question-btn">4. What is the schedule for classes?</button>
+        <button class="question-btn">5. Do you have online classes?</button>
+        <button class="question-btn">6. How do I enroll?</button>
+        <button class="question-btn">7. Are there trial classes?</button>
+        <button class="question-btn">8. What are the subjects available?</button>
+        <button class="question-btn">9. Who are the instructors?</button>
+        <button class="question-btn">10. Any discounts or offers?</button>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type your message here..." />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -972,63 +1278,154 @@ body.loaded .loader-wrapper {
         $("#facultyModal").modal("show");
       });
     });
-   
+
     //Gallery Section
-  const galleryImages = $('.gallery-item img');
-  let currentIndex = 0;
+    const galleryImages = $('.gallery-item img');
+    let currentIndex = 0;
 
-  function openLightbox(index) {
-    currentIndex = index;
-    $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
-    $('#lightbox').fadeIn();
-  }
+    function openLightbox(index) {
+      currentIndex = index;
+      $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
+      $('#lightbox').fadeIn();
+    }
 
-  function showNext() {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
-    $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
-  }
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
+    }
 
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
-  }
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      $('#lightbox-img').attr('src', galleryImages.eq(currentIndex).attr('src'));
+    }
 
-  // Open lightbox on image click
-  galleryImages.click(function() {
-    const index = galleryImages.index(this);
-    openLightbox(index);
-  });
+    // Open lightbox on image click
+    galleryImages.click(function () {
+      const index = galleryImages.index(this);
+      openLightbox(index);
+    });
 
-  // Close lightbox
-  $('#lightbox .close').click(function() {
-    $('#lightbox').fadeOut();
-  });
-
-  // Prev/Next buttons
-  $('#lightbox .next').click(function(e){
-    e.stopPropagation();
-    showNext();
-  });
-  $('#lightbox .prev').click(function(e){
-    e.stopPropagation();
-    showPrev();
-  });
-
-  // Click outside image closes lightbox
-  $('#lightbox').click(function(e) {
-    if(e.target.id === 'lightbox') {
+    // Close lightbox
+    $('#lightbox .close').click(function () {
       $('#lightbox').fadeOut();
-    }
-  });
+    });
 
-  // Keyboard navigation
-  $(document).keydown(function(e){
-    if($('#lightbox').is(':visible')){
-      if(e.key === 'ArrowRight') showNext();
-      if(e.key === 'ArrowLeft') showPrev();
-      if(e.key === 'Escape') $('#lightbox').fadeOut();
-    }
+    // Prev/Next buttons
+    $('#lightbox .next').click(function (e) {
+      e.stopPropagation();
+      showNext();
+    });
+    $('#lightbox .prev').click(function (e) {
+      e.stopPropagation();
+      showPrev();
+    });
+
+    // Click outside image closes lightbox
+    $('#lightbox').click(function (e) {
+      if (e.target.id === 'lightbox') {
+        $('#lightbox').fadeOut();
+      }
+    });
+
+    // Keyboard navigation
+    $(document).keydown(function (e) {
+      if ($('#lightbox').is(':visible')) {
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'Escape') $('#lightbox').fadeOut();
+      }
+    });
+
+    // live chat here 
+    const liveChatBtn = document.getElementById("liveChatBtn");
+const chatPopup = document.getElementById("chatPopup");
+const closeChat = document.getElementById("closeChat");
+const questionBtns = document.querySelectorAll(".question-btn");
+const chatBody = document.getElementById("chatBody");
+const userInput = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+const whatsappIcon = document.querySelector(".whatsapp-icon");
+
+// Predefined answers
+const answers = {
+  "1. What are the coaching fees?": "Our coaching fees start from PKR 5000/month. Specific course fees vary.",
+  "2. What courses do you offer?": "We offer Math, Physics, Chemistry, and English courses.",
+  "3. How can I contact you?": "You can contact us at +92 333 2150657 or email info@coaching.com.",
+  "4. What is the schedule for classes?": "Classes are scheduled from Monday to Saturday, 9 AM to 5 PM.",
+  "5. Do you have online classes?": "Yes, we provide online classes via Zoom and Google Meet.",
+  "6. How do I enroll?": "You can enroll online via our website or visit our center directly.",
+  "7. Are there trial classes?": "Yes, we offer one free trial class before enrollment.",
+  "8. What are the subjects available?": "We offer Math, Physics, Chemistry, English, and Computer Science.",
+  "9. Who are the instructors?": "Our instructors are experienced teachers with 5+ years of teaching experience.",
+  "10. Any discounts or offers?": "We have seasonal discounts and referral offers. Contact us for details."
+};
+
+// Open chat popup
+liveChatBtn.addEventListener("click", () => {
+  chatPopup.style.display = "flex";
+  liveChatBtn.style.display = "none";
+  whatsappIcon.style.display = "none";
+});
+
+// Close chat popup
+closeChat.addEventListener("click", () => {
+  chatPopup.style.display = "none";
+  liveChatBtn.style.display = "flex";
+  whatsappIcon.style.display = "flex";
+});
+
+// Handle predefined questions
+questionBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const question = btn.textContent;
+    appendUserMessage(question);
+    setTimeout(() => {
+      appendBotMessage(answers[question]);
+    }, 500);
   });
+});
+
+// Handle user input
+sendBtn.addEventListener("click", handleUserInput);
+userInput.addEventListener("keypress", (e) => {
+  if(e.key === "Enter") handleUserInput();
+});
+
+function handleUserInput() {
+  const text = userInput.value.trim();
+  if(!text) return;
+  appendUserMessage(text);
+
+  setTimeout(() => {
+    const matchedAnswer = Object.keys(answers).find(q => q.toLowerCase() === text.toLowerCase());
+    if(matchedAnswer) {
+      appendBotMessage(answers[matchedAnswer]);
+    } else {
+      appendBotMessage("Sorry, I don’t have an answer to that question at the moment. Please select one of the options or contact us directly.");
+    }
+  }, 500);
+
+  userInput.value = "";
+}
+
+function appendUserMessage(message) {
+  const p = document.createElement("p");
+  p.classList.add("bot-message");
+  p.style.background = "#DCF8C6"; // WhatsApp-style user message
+  p.textContent = message;
+  chatBody.appendChild(p);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function appendBotMessage(message) {
+  const p = document.createElement("p");
+  p.classList.add("bot-message");
+  p.textContent = message;
+  chatBody.appendChild(p);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
   </script>
 </body>
+
 </html>
