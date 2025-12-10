@@ -221,6 +221,71 @@ nav a {
     transform: translateY(30px);
     transition: all 0.4s ease;
 }
+/* Faculity section         */
+    .faculty-section {
+        padding: 60px 0;
+        text-align: center;
+    }
+    .faculty-section h2 {
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 50px;
+    }
+    .faculty-card {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s, border 0.3s;
+        cursor: pointer;
+        overflow: hidden;
+        border: 3px solid transparent;
+    }
+    .faculty-card:hover {
+        transform: translateY(-8px);
+        border-color: #003366;
+    }
+    .faculty-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 3px solid #003366;
+    }
+    .faculty-card-body {
+        padding: 20px;
+    }
+    .faculty-card-body h5 {
+        font-weight: 600;
+        color: #003366;
+        margin-bottom: 10px;
+    }
+    .faculty-card-body p {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    #extraFaculty {
+        display: none;
+    }
+    .view-more-btn {
+        margin-top: 30px;
+        background-color: #D4A017;
+        color: #fff;
+        border-radius: 50px;
+        padding: 10px 30px;
+        border: none;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .view-more-btn:hover {
+        background-color: #b88813;
+    }
+    .modal-teacher-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border: 3px solid #003366;
+    }
 
 /* About mission and vision  */
 .premium-mv {
@@ -326,7 +391,7 @@ nav a {
     transform: scale(1.1);
     box-shadow: 0 12px 30px rgba(212, 160, 23, 0.6);
 }
-/* Testimonial section */
+
 /* PREMIUM TESTIMONIAL STYLING */
 .premium-testimonials {
     position: relative;
@@ -458,7 +523,19 @@ nav a {
     transform: scale(1.15);
     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
+    .gallery-img {
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
+    .gallery-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .theme-primary {
+        color: #003366;
+    }
 /* Keyframes for testimonial fade & float */
 @keyframes floatIn {
     0% {
@@ -476,13 +553,90 @@ nav a {
     0% { transform: translateY(0) scale(1); }
     100% { transform: translateY(-8px) scale(1.05); }
 }
+/* 
+footer */
+footer {
+    width: 100vw; /* full viewport width */
+    position: relative; /* optional */
+    left: 0;        /* make sure it starts from left */
+    margin: 0;
+    padding: 40px 0; /* adjust padding as you want */
+    background: #003366; /* or any color */
+    color: #fff;
+}
+footer h4 { 
+    letter-spacing: 0.5px; };
 
+footer a:hover { 
+    opacity: 0.7;
+   transition: 0.3s ease; }
+.social-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    font-size: 20px;
+}
 
+.social-circle:hover {
+    background: #fff;
+    color: #003366 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(255,255,255,0.3);
+}
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #003366;
+    color: #fff;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 99999;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top:hover {
+    background: #fff;
+    color: #003366;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.btn-warning.rounded-circle {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    font-size: 20px;
+}
      /* ----------------- Floating Buttons ----------------- */
         .floating-icons {
             position: fixed;
             bottom: 20px;
             right: 20px;
+            left: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -534,6 +688,7 @@ nav a {
         /* ----------------- Chat Widget ----------------- */
         #chatWidget {
             position: fixed;
+            top: 200px;
             bottom: 90px;
             right: 20px;
             width: 320px;
@@ -705,3 +860,16 @@ nav a {
             #chatWidget { width: 90%; height: 350px;}
             .floating-icons { bottom: 15px; right: 15px;}
         }
+        .float-btn {
+    width: max-content; /* make button shrink to content */
+    cursor: pointer;
+}
+
+.position-fixed.float-container {
+    right: 1rem; /* stick to right */
+    bottom: 1.5rem; /* distance from bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1050; /* make sure it's above everything */
+}
